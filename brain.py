@@ -11,7 +11,7 @@ def calculate_risk(conversation):
     tactics = []
 
     # Fake authority
-    if re.search(r"\bcbi\b|\bpolice\b|\binspector\b|\bofficer\b|सीबीआई|पुलिस", text):
+    if re.search(r"\bcbi\b|\bpolice\b|\binspector\b|\bofficer\b|सीबीआई|सीबीआइ|इंस्पेक्टर|इन्स्पेक्टर|पुलिस", text):
         score += 20
         tactics.append("fake authority")
 

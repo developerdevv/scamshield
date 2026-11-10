@@ -107,10 +107,12 @@ def build_conversation(upto):
     return [{"who": turns[i]["who"], "text": transcripts[i]} for i in range(upto + 1)]
 
 
-def draw_transcript(slot, conversation):
+def draw_transcript(slot, conversation, last_n=2):
+    """Show only the latest turns so the whole page stays on one screen while recording."""
     with slot.container():
         st.subheader("📞 Call Transcript (Gnani Prisma v3.0)")
-        for m in conversation:
+        st.caption(f"Turn {len(conversation)} of {len(turns)}")
+        for m in conversation[-last_n:]:
             st.markdown("### 🔴 Scammer" if m["who"] == "scammer" else "### 🟢 Victim")
             st.write(m["text"])
             st.divider()
